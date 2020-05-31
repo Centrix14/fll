@@ -49,5 +49,7 @@ char *fll_read_from_file(char *fname) {
 	}
 	buffer[i] = '\0';
 
+	fclose(src);
+
 	return buffer;
 }
