@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
+char buf[BUFSIZ] = "\0";
+
 void *fll_malloc_s(int size) {
 	char *ptr = malloc(size);
 
@@ -41,7 +43,7 @@ char *fll_read_from_file(char *fname) {
 	static char *buffer = NULL;
 	FILE *src = NULL;
 
-	buffer = fll_malloc_s(size);
+	buffer = fll_malloc_s(sizeof(char) * size);
 
 	src = fll_fopen_s(fname, "r");
 	c = fgetc(src);
@@ -54,4 +56,20 @@ char *fll_read_from_file(char *fname) {
 	fclose(src);
 
 	return buffer;
+}
+
+char *fll_read_from_file_static(char *fname) {
+	int c = 0, i = 0;
+	FILE *src = NULL;
+
+	src = fll_fopen_s(fname, "r");
+	c = fgetc(src);
+	while (!feof(src) && i < BUFSIZ-1) {
+		buf[i++] = c;
+		c = fgetc(src);
+	}
+	buf[i] = '\0';
+
+	fclose(src);
+	return buf;
 }
