@@ -23,8 +23,10 @@ FILE *fll_fopen_s(char *fname, char *mode) {
 }
 
 void fll_free_s(char *ptr) {
-	if (ptr)
+	if (ptr) {
+		puts("bef free");	
 		free(ptr);
+	}
 }
 
 int fll_get_file_size(char *fname) {
