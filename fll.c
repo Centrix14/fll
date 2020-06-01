@@ -38,7 +38,7 @@ int fll_get_file_size(char *fname) {
 
 char *fll_read_from_file(char *fname) {
 	int size = fll_get_file_size(fname), c = 0, i = 0;
-	char *buffer = NULL;
+	static char *buffer = NULL;
 	FILE *src = NULL;
 
 	buffer = fll_malloc_s(size);
