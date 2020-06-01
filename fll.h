@@ -2,7 +2,5 @@
 #define __FILE_LOADING_LIBRARY_H_INCLUDED__
 
 char *fll_read_from_file(char*);
-char *fll_read_from_file_static(char *fname);
-void fll_free_s(char*);
 
 #endif
