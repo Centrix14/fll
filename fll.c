@@ -25,7 +25,7 @@ FILE *fll_fopen_s(char *fname, char *mode) {
 void fll_free_s(char *ptr) {
 	if (ptr) {
 		free(ptr);
-		printf("");	
+		printf(" ");	
 	}
 }
 
