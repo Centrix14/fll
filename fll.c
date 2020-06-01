@@ -3,7 +3,7 @@
 #include <sys/stat.h>
 
 void *fll_malloc_s(int size) {
-	void *ptr = malloc(size);
+	char *ptr = malloc(size);
 
 	if (!ptr) {
 		perror(__func__);
@@ -22,7 +22,7 @@ FILE *fll_fopen_s(char *fname, char *mode) {
 	return ptr;
 }
 
-void fll_free_s(void *ptr) {
+void fll_free_s(char *ptr) {
 	if (ptr)
 		free(ptr);
 }
